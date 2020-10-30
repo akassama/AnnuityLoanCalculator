@@ -1,0 +1,7 @@
+﻿@using System.Web.Mvc.Html;
+
+<!-- format double value to currency format with commas -->
+@helper FormatCurrency(double money) {
+    string format = String.Format("{0:n}", money);
+    @format;
+}

@@ -1,0 +1,51 @@
+﻿@model AnnuityLoanCalculator.Models.LoanModel
+
+@{
+    ViewData["Title"] = "Annuity Calculator";
+}
+
+<div class="container">
+    <div class="row">
+        <div class="col-sm-12 col-md-6 offset-md-3 col-lg-4 offset-lg-4">
+            <h2>Annuity Calculator</h2>
+            <p>Implements a simple annuity loan calculation</p>
+            @using (Html.BeginForm("Index", "Home", FormMethod.Post, new { id = "CalculatorForm" }))
+            {
+                @Html.AntiForgeryToken()
+
+                <!--Validation Error Messages -->
+                @Html.ValidationSummary(false, "", new { @class = "text-danger" })
+
+                <!--//Action Messages-->
+                @Html.Partial("~/Views/Shared/_ProcessMessage.cshtml")
+
+                <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+                <div class="row">
+
+                    <div class="col-12 mb-2">
+                        @Html.LabelFor(model => model.LoanSum)
+                        @Html.TextBoxFor(model => model.LoanSum, new { @class = "form-control currency-number", @maxlength = "15", @required = "" })
+                    </div>
+
+                    <div class="col-12 mb-2">
+                        @Html.LabelFor(model => model.LoanTerm)
+                        @Html.TextBoxFor(model => model.LoanTerm, new { @class = "form-control integer-plus-only", @maxlength = "3", @required = "" })
+                    </div>
+
+                    <div class="col-12 mb-2">
+                        @Html.LabelFor(model => model.LoanInterest)
+                        @Html.TextBoxFor(model => model.LoanInterest, new { @class = "form-control float-number", @maxlength = "6", @required = "" })
+                    </div>
+
+                    <!-- Hidden field, not used in calculation -->
+                    <div class="col-12 mb-2 d-none">
+                        @Html.LabelFor(model => model.PaymentStep, new { @class = "d-none" })
+                        @Html.HiddenFor(model => model.PaymentStep, new { @class = "form-control integer-plus-only d-none", @maxlength = "4", @required = "", @Value = "0" })
+                    </div>
+
+                </div>
+                <button type="submit" class="btn btn-primary mt-3">Calculate</button>
+            }
+        </div>
+    </div>
+</div>

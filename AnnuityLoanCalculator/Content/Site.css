@@ -1,0 +1,9 @@
+﻿
+/* jquery validate as block */
+label.text-danger {
+    float: none;
+    color: red;
+    padding-left: .5em;
+    vertical-align: top;
+    display: block;
+}

@@ -1,0 +1,52 @@
+﻿@model IEnumerable<AnnuityLoanCalculator.Models.ResultsModel>
+
+@{
+    ViewBag.Title = "Results";
+    int row_count = 0;
+}
+
+<div class="container">
+    <h2>Annuity Loan Results</h2>
+    <p>
+        Loan Sum: <span class="text-info">$@TempData["LoanAmount"]</span>, Loan Term: <span class="text-info">@TempData["LoanTerm"] months</span>,
+        Loan Interest Rate: <span class="text-info">@TempData["LoanInterest"]%</span>, Payment Steps: <span class="text-info">@TempData["PaymentStep"]</span>
+    </p>
+    <table class="table table-bordered" id="dataTable">
+        <thead class="thead-light">
+            <tr>
+                <th>#</th>
+                <th>@Html.DisplayNameFor(model => model.PaymentNumber)</th>
+                <th>@Html.DisplayNameFor(model => model.PaymentDate)</th>
+                <th>@Html.DisplayNameFor(model => model.PrincipalPayment)</th>
+                <th>@Html.DisplayNameFor(model => model.InterestPayment)</th>
+                <th>@Html.DisplayNameFor(model => model.PrincipalBalance)</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in Model)
+            {
+                row_count += 1;
+            <tr>
+                <td>
+                    @row_count
+                </td>
+                <td>
+                    $@AppHelpers.FormatCurrency(item.PaymentNumber)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.PaymentDate)
+                </td>
+                <td>
+                    $@AppHelpers.FormatCurrency(item.PrincipalPayment)
+                </td>
+                <td>
+                    $@AppHelpers.FormatCurrency(item.InterestPayment)
+                </td>
+                <td>
+                    $@AppHelpers.FormatCurrency(item.PrincipalBalance)
+                </td>
+            </tr>
+            }
+        </tbody>
+    </table>
+</div>

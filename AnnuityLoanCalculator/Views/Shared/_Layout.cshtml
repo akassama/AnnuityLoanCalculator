@@ -1,0 +1,68 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>@ViewBag.Title - Loan Annuity Calculator</title>
+    <link rel="stylesheet" href="~/Content/bootstrap.min.css">
+    <link rel="stylesheet" href="~/Content/Site.css">
+    <script src="~/Scripts/jquery.min.js"></script>
+    <script src="~/Scripts//popper.min.js"></script>
+    <script src="~/Scripts//bootstrap.min.js"></script>
+    <!-- Datable -->
+    <link href="~/Scripts/datatables/dataTables.bootstrap4.min.css" rel="stylesheet">
+
+    <link rel="shortcut icon" href="https://via.placeholder.com/30x30.png/09f/fff?text=LAC" type="image/png">
+</head>
+<body>
+    <header>
+        <nav class="navbar navbar-expand-sm navbar-toggleable-sm navbar-light bg-white border-bottom box-shadow mb-3">
+            <div class="container">
+                <a href="~/" class="navbar-brand">Loan Annuity Calculator</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target=".navbar-collapse" aria-controls="navbarSupportedContent"
+                        aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="navbar-collapse collapse d-sm-inline-flex flex-sm-row-reverse">
+                    <ul class="navbar-nav flex-grow-1">
+                        <li class="nav-item">
+                            <a href="~/" class="nav-link text-dark">Home</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="~/Home/AnnuityCalculator" class="nav-link text-dark">Additional Task</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <div class="container">
+        <main role="main" class="pb-3">
+            @RenderBody()
+        </main>
+    </div>
+
+    <script src="~/Scripts/jquery.min.js"></script>
+
+    <script src="~/Scripts/bootstrap.min.js"></script>
+    <!-- JQuery Validation -->
+    <script src="~/Scripts/jquery.validate.min.js"></script>
+    <!-- Site Js -->
+    <script src="~/Scripts/site.js"></script>
+
+    <!-- datatables js -->
+    <script src="~/Scripts/datatables/jquery.dataTables.min.js"></script>
+    <script src="~/Scripts/datatables/dataTables.bootstrap4.min.js"></script>
+    <script src="~/Scripts/datatables/script.js"></script>
+
+    <script>
+        $("#CalculatorForm").validate({
+            errorClass: 'is-invalid text-danger',
+            successClass: 'is-valid',
+            errorsWrapper: '<span class="form-text text-danger"></span>',
+            errorTemplate: '<span></span>',
+            trigger: 'change'
+        });
+    </script>
+</body>
+</html>
